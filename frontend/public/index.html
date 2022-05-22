@@ -53,6 +53,13 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>TalkGram</title>
+
+    <script>
+      if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === "object") {
+        // Prevent to load react_devtools_backend.js in production (App will load fast in production)
+        __REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {};
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

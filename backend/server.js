@@ -1,13 +1,13 @@
 const express = require("express");
+require("dotenv").config();
 const helmet = require("helmet");
 const compression = require("compression");
-require("dotenv").config();
+const path = require("path");
 require("./config/db")();
 const {
   getGoogleAuthURL,
   getGoogleUser,
 } = require("./controllers/googleOAuth");
-const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -51,7 +51,7 @@ var forceSsl = function (req, res, next) {
   return next();
 };
 if (process.env.NODE_ENV === "production") {
-  app.use(forceSsl);
+  // app.use(forceSsl);
   app.use(express.static(path.resolve(__dirname, "../", "frontend", "build")));
   app.get("/*", (req, res) => {
     res.sendFile(
