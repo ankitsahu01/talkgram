@@ -44,14 +44,7 @@ const mailerRoutes = require("./routes/mailerRoutes");
 app.use("/api/mailer", mailerRoutes);
 
 // -------------------------------Deployment------------------------------
-var forceSsl = function (req, res, next) {
-  if (req.headers["x-forwarded-proto"] !== "https") {
-    return res.redirect(["https://", req.get("Host"), req.url].join(""));
-  }
-  return next();
-};
 if (process.env.NODE_ENV === "production") {
-  // app.use(forceSsl);
   app.use(express.static(path.resolve(__dirname, "../", "frontend", "build")));
   app.get("/*", (req, res) => {
     res.sendFile(
@@ -71,7 +64,6 @@ app.use(notFoundError);
 
 //Middleware for Errors
 const errorMiddleware = require("./middlewares/error");
-const res = require("express/lib/response");
 app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 4000;
