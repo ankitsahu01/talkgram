@@ -1,4 +1,6 @@
 const express = require("express");
+const helmet = require("helmet");
+const compression = require("compression");
 require("dotenv").config();
 require("./config/db")();
 const {
@@ -9,6 +11,8 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
+app.use(helmet());
+app.use(compression());
 
 //Getting Google Login URL
 app.get("/auth/google/url", (req, res) => {
