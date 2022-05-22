@@ -183,7 +183,7 @@ const Login = () => {
               variant="outlined"
               href={
                 process.env.NODE_ENV === "production"
-                  ? ""
+                  ? "https://talkgram.herokuapp.com/auth/google/url"
                   : "http://localhost:4000/auth/google/url"
               }
               startIcon={<GoogleIcon />}
