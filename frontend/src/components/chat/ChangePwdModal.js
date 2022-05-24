@@ -72,7 +72,6 @@ const ChangePwdModal = ({ children }) => {
         },
       });
       const resData = await res.json();
-      console.log(resData);
       if (resData.success) {
         toast.success("You have successfully changed your password.");
         handleClose();

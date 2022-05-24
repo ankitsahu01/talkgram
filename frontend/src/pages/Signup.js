@@ -54,7 +54,6 @@ const Signup = () => {
       "/api/user/search-available-username?q=" + e.target.value
     );
     const resData = await res.json();
-    // console.log(resData);
     if (resData.success) {
       //username available
       document.getElementById("username-helper-text").style.visibility =

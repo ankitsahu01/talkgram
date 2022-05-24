@@ -5,7 +5,6 @@ const ErrorHandler = require("../config/errorHandler");
 
 const accessChat = asyncErrorHandler(async (req, res, next) => {
   const { userId } = req.body;
-  console.log(userId);
   if (!userId) {
     console.log("userId param not sent with the request");
     return next(
