@@ -11,7 +11,17 @@ const {
 
 const app = express();
 app.use(express.json());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        defaultSrc: ["'self'"],
+        "img-src": ["'self'", "cloudinary.com", "googleusercontent.com"],
+      },
+    },
+  })
+);
 app.use(compression());
 
 //Getting Google Login URL

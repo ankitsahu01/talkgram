@@ -19,37 +19,26 @@
     <title>TalkGram</title>
 
     <style type="text/css">
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-      .loader-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-      }
-      .loader-container .firstLoading {
+      .loading {
         position: absolute;
-        top: 47%;
-        width: 40px;
-        height: 40px;
+        inset: 0;
+        margin: auto;
+        border-radius: 50%;
+        animation: keepLoading 0.7s linear infinite;
+      }
+      .firstLoading {
+        width: 30px;
+        height: 30px;
         border: 7px double #ffa701;
         border-top-color: #ffff33;
         border-bottom-color: #ffff33;
       }
-      .loader-container .secondLoading {
-        width: 60px;
-        height: 60px;
-        border: 6px double #c4fcf0;
+      .secondLoading {
+        width: 50px;
+        height: 50px;
+        border: 7px double #c4fcf0;
         border-top-color: #41f7cf;
         border-bottom-color: #41f7cf;
-      }
-      .loader-container .loading {
-        border-radius: 50%;
-        animation: keepLoading 0.7s linear infinite;
       }
       @keyframes keepLoading {
         from {
@@ -70,10 +59,8 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-      <div class="loader-container">
-        <span class="loading firstLoading"></span>
-        <span class="loading secondLoading"></span>
-      </div>
+      <span class="loading firstLoading"></span>
+      <span class="loading secondLoading"></span>
     </div>
   </body>
 </html>
