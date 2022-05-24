@@ -17,7 +17,11 @@ app.use(
       useDefaults: true,
       directives: {
         defaultSrc: ["'self'"],
-        "img-src": ["'self'", "cloudinary.com", "googleusercontent.com"],
+        "img-src": [
+          "'self'",
+          "res.cloudinary.com",
+          "lh3.googleusercontent.com",
+        ],
       },
     },
   })
