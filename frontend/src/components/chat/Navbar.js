@@ -47,7 +47,7 @@ const menuUpConeStyle = (rightMes) => ({
   },
 });
 
-export default function Navbar() {
+export default function Navbar({ fetchAgain, setFetchAgain }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loggedUser, notifications, colorMode } = useSelector(
@@ -199,7 +199,13 @@ export default function Navbar() {
       >
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={() => {
+                dispatch(setSelectedChat(null));
+                setFetchAgain(!fetchAgain);
+              }}
+            >
               <img
                 src={colorMode === "light" ? LightModeLogo : DarkModeLogo}
                 alt="Logo"

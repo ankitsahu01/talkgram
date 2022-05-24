@@ -46,7 +46,7 @@ const Chatpage = () => {
               ), url(${bgImg})`,
         }}
       >
-        <Navbar />
+        <Navbar fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         <div
           style={{
             display: "flex",
