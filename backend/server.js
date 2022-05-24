@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(
   helmet({
+    // Safely load the data from different origin url, to minimize the cross-site scripting.
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
