@@ -1,12 +1,13 @@
 import { useState } from "react";
 import UserSearchSkeleton from "../user/UserSearchSkeleton";
 import UserSearchItem from "../user/UserSearchItem";
-import SearchIcon from "@mui/icons-material/Search";
 import Drawer from "@mui/material/Drawer";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { useSelector, useDispatch } from "react-redux";
@@ -91,15 +92,29 @@ const SearchDrawer = () => {
         </IconButton>
       </Tooltip>
       <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
-        <Paper square sx={{ p: 2, position: "sticky", top: 0, zIndex: 1 }}>
+        <Paper
+          square
+          sx={{ p: 2, pl: 0, position: "sticky", top: 0, zIndex: 1 }}
+        >
+          <Tooltip title="Go back">
+            <IconButton
+              size="large"
+              aria-label="back button"
+              color="primary"
+              onClick={toggleDrawer(false)}
+              sx={{ mt: "3px" }}
+            >
+              <ArrowBackIosNewIcon />
+            </IconButton>
+          </Tooltip>
           <TextField
             autoFocus
             label="Search User"
             placeholder="Type Name/Username"
             onChange={handleSearch}
             InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
+              endAdornment: (
+                <InputAdornment position="end">
                   <SearchIcon />
                 </InputAdornment>
               ),
