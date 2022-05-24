@@ -46,7 +46,7 @@ const Chatpage = () => {
               ), url(${bgImg})`,
         }}
       >
-        {loggedUser && <Navbar />}
+        <Navbar />
         <div
           style={{
             display: "flex",
@@ -56,10 +56,9 @@ const Chatpage = () => {
             height: "85vh",
           }}
         >
-          {loggedUser && <MyChats fetchAgain={fetchAgain} />}
-          {loggedUser && (
-            <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
-          )}
+          <MyChats fetchAgain={fetchAgain} />
+
+          <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </div>
       </Paper>
     </div>

@@ -3,15 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
 import { setLoggedUser } from "../stateFeatures/loggedUserSlice";
 
 const OAuthValidate = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
-  // const loggedUser = useSelector((state) => state.loggedUser);
   const dispatch = useDispatch();
 
   const isValidToken = async (token) => {
@@ -31,7 +28,6 @@ const OAuthValidate = () => {
   };
 
   const fetchUserInfo = async () => {
-    // if (loggedUser) return navigate("/chat");
     const urlParams = new URLSearchParams(search);
     const userObj = Object.fromEntries(urlParams);
     if (
@@ -56,14 +52,13 @@ const OAuthValidate = () => {
         sx={{
           display: "flex",
           width: "100%",
+          height: "100vh",
           justifyContent: "center",
           alignItems: "center",
           backdropFilter: "brightness(80%)",
         }}
       >
-        <Paper elevation={5} sx={{ px: 5, py: 4 }}>
-          <CircularProgress />
-        </Paper>
+        <CircularProgress />
       </Box>
     </>
   );
