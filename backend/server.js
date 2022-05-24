@@ -21,6 +21,7 @@ app.use(
           "'self'",
           "res.cloudinary.com",
           "lh3.googleusercontent.com",
+          "img.icons8.com",
         ],
         "script-src": ["'self'", "'unsafe-inline'"],
       },
