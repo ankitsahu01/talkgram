@@ -11,18 +11,23 @@ const {
 
 const app = express();
 app.use(express.json());
-app.use(helmet());
 app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "img-src": ["'self'", "res.cloudinary.com", "lh3.googleusercontent.com"],
-      "script-src": ["'self'", "'unsafe-inline'"],
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        defaultSrc: ["'self'"],
+        "img-src": [
+          "'self'",
+          "res.cloudinary.com",
+          "lh3.googleusercontent.com",
+        ],
+        "script-src": ["'selft'", "'unsafe-inline'"],
+      },
     },
+    crossOriginEmbedderPolicy: false,
   })
 );
-app.use(helmet({ crossOriginEmbedderPolicy: false }));
-
 app.use(compression());
 
 //Getting Google Login URL
