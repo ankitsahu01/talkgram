@@ -22,7 +22,7 @@ app.use(
           "res.cloudinary.com",
           "lh3.googleusercontent.com",
         ],
-        "script-src": ["'selft'", "'unsafe-inline'"],
+        "script-src": ["'self'", "'unsafe-inline'"],
       },
     },
     crossOriginEmbedderPolicy: false,
