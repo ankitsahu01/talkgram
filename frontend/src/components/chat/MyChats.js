@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getSender } from "../../config/ChatLogics";
 import AddIcon from "@mui/icons-material/Add";
 import { Box, Button, Stack, Grid, Avatar } from "@mui/material";
@@ -10,12 +10,14 @@ import Typography from "@mui/material/Typography";
 import CreateGroupModal from "./CreateGroupModal";
 import GroupsIcon from "@mui/icons-material/Groups";
 import DotIndicator from "../animations/DotIndicator";
+import UserSearchSkeleton from "../user/UserSearchSkeleton";
 import { useSelector, useDispatch } from "react-redux";
 import { setChats } from "../../stateFeatures/chatsSlice";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
 import { setNotifications } from "../../stateFeatures/notificationsSlice";
 
 const MyChats = ({ fetchAgain }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { loggedUser, chats, notifications, selectedChat } = useSelector(
     (state) => state
@@ -23,6 +25,7 @@ const MyChats = ({ fetchAgain }) => {
 
   const fetchChats = async () => {
     try {
+      setLoading(true);
       const res = await fetch("/api/chat", {
         headers: {
           "Content-Type": "application/json",
@@ -33,6 +36,8 @@ const MyChats = ({ fetchAgain }) => {
       dispatch(setChats(data));
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -196,6 +201,7 @@ const MyChats = ({ fetchAgain }) => {
                 </CardActionArea>
               </Card>
             ))}
+          {loading && <UserSearchSkeleton />}
         </Stack>
       </Paper>
     </>

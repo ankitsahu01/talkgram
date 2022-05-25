@@ -99,10 +99,11 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       {selectedChat && (
         <Box
           sx={{
-            py: 1,
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
             borderBottom: 1,
+            height: 45,
             borderBottomColor: "rgba(0,0,0,0.3)",
           }}
         >

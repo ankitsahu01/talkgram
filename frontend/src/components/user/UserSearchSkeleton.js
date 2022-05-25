@@ -1,17 +1,15 @@
 import Skeleton from "@mui/material/Skeleton";
-import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 
 const UserSearchSkeleton = () => {
   return (
-    <Grid container alignItems="center" sx={{ mt: 2 }}>
-      <Grid item xs={3}>
-        <Skeleton variant="circular" animation="wave" width={40} height={40} />
-      </Grid>
-      <Grid item xs={9}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1, py: 1.5 }}>
+      <Skeleton variant="circular" animation="wave" width={50} height={40} />
+      <Box sx={{ width: "100%" }}>
         <Skeleton animation="wave" height={35} />
         <Skeleton animation="wave" height={20} />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 
