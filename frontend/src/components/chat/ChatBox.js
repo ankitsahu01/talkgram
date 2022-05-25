@@ -51,9 +51,10 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
     return socket.value.on("message received", async (newMsgReceived) => {
       if (!selectedChat || selectedChat._id !== newMsgReceived.chat._id) {
         if (
-          !notifications
+          notifications.length === 0 ||
+          notifications
             .map((notif) => notif.chat._id)
-            .find((chatId) => chatId === newMsgReceived.chat._id)
+            .find((chatId) => chatId !== newMsgReceived.chat._id)
         ) {
           await fetch("/api/user/notification", {
             method: "POST",
