@@ -25,7 +25,7 @@ const MyChats = ({ fetchAgain }) => {
 
   const fetchChats = async () => {
     try {
-      setLoading(true);
+      if (!chats.length) setLoading(true);
       const res = await fetch("/api/chat", {
         headers: {
           "Content-Type": "application/json",
@@ -147,7 +147,7 @@ const MyChats = ({ fetchAgain }) => {
                           />
                         )}
                       </Grid>
-                      <Grid item sx={{ width: "80%" }}>
+                      <Grid item sx={{ width: "75%" }}>
                         <Typography
                           variant="h6"
                           component="h2"
@@ -190,7 +190,7 @@ const MyChats = ({ fetchAgain }) => {
                           sx={{
                             alignSelf: "center",
                             ml: "auto",
-                            pr: 1,
+                            // pr: 1,
                           }}
                         >
                           <DotIndicator />

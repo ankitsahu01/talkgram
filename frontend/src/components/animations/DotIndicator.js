@@ -1,11 +1,10 @@
 import { styled } from "@mui/system";
 
 const Indicator = styled("div")({
-  width: 7,
-  height: 7,
+  width: 8,
+  height: 8,
   backgroundColor: "blue",
   borderRadius: "50%",
-  boxShadow: "0 0 1px 1px blue",
 });
 
 const DotIndicator = () => {
