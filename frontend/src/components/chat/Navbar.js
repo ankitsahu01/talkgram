@@ -74,6 +74,7 @@ export default function Navbar({ fetchAgain, setFetchAgain }) {
   };
 
   const LogoutUser = () => {
+    dispatch(setSelectedChat(null));
     dispatch(removeLoggedUser());
     navigate("/");
   };
