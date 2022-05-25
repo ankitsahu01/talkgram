@@ -5,7 +5,7 @@ import ChatBox from "../components/chat/ChatBox";
 import { useSelector, useDispatch } from "react-redux";
 import { setSocket } from "../stateFeatures/socketSlice";
 import { io } from "socket.io-client";
-import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 import bgImg from "../assets/background.jpg";
 
 const ENDPOINT =
@@ -26,9 +26,8 @@ const Chatpage = () => {
   }, [loggedUser]);
 
   return (
-    <div className="Chatpage">
-      <Paper
-        square
+    <>
+      <Box
         sx={{
           width: "100%",
           minHeight: "100vh",
@@ -47,21 +46,21 @@ const Chatpage = () => {
         }}
       >
         <Navbar fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
-        <div
-          style={{
+        <Box
+          sx={{
             display: "flex",
             justifyContent: "space-between",
-            padding: 20,
-            gap: 20,
-            height: "85vh",
+            p: { xs: 1, md: 2.3 },
+            gap: 2.3,
+            height: "82vh",
           }}
         >
           <MyChats fetchAgain={fetchAgain} />
 
           <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
-        </div>
-      </Paper>
-    </div>
+        </Box>
+      </Box>
+    </>
   );
 };
 
