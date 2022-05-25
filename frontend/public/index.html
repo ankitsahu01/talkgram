@@ -19,28 +19,24 @@
     <title>TalkGram</title>
 
     <style type="text/css">
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
       .loading {
         position: absolute;
         inset: 0;
         margin: auto;
         border-radius: 50%;
-        animation: keepLoading 0.7s linear infinite;
-      }
-      .firstLoading {
-        width: 30px;
-        height: 30px;
-        border: 7px double #ffa701;
-        border-top-color: #ffff33;
-        border-bottom-color: #ffff33;
-      }
-      .secondLoading {
         width: 50px;
         height: 50px;
-        border: 7px double #c4fcf0;
-        border-top-color: #41f7cf;
-        border-bottom-color: #41f7cf;
+        border: 4px solid #41f7cf;
+        border-right-color: #c4fcf0;
+        box-shadow: 0 0 10px #41f7cf inset;
+        animation: keepRotate 0.7s linear infinite;
       }
-      @keyframes keepLoading {
+      @keyframes keepRotate {
         from {
           transform: rotate(0);
         }
@@ -58,9 +54,8 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
-      <span class="loading firstLoading"></span>
-      <span class="loading secondLoading"></span>
+    <div id="root1">
+      <span class="loading"></span>
     </div>
   </body>
 </html>
