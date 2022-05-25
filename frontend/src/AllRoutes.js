@@ -4,6 +4,7 @@ import OAuthValidate from "./pages/OAuthValidate";
 import Forgotpwd from "./pages/ForgotPwd";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Footer from "./components/miscellaneous/Footer";
 import { useSelector } from "react-redux";
 
 const AllRoutes = () => {
@@ -18,11 +19,28 @@ const AllRoutes = () => {
       />
       <Route
         path="/login"
-        element={loggedUser ? <Navigate replace to="/chat" /> : <Login />}
+        element={
+          loggedUser ? (
+            <Navigate replace to="/chat" />
+          ) : (
+            <>
+              <Login /> <Footer />
+            </>
+          )
+        }
       />
       <Route
         path="/signup"
-        element={loggedUser ? <Navigate replace to="/chat" /> : <Signup />}
+        element={
+          loggedUser ? (
+            <Navigate replace to="/chat" />
+          ) : (
+            <>
+              <Signup />
+              <Footer />
+            </>
+          )
+        }
       />
       <Route
         path="/chat"
@@ -36,7 +54,16 @@ const AllRoutes = () => {
       />
       <Route
         path="/forgot-password"
-        element={loggedUser ? <Navigate replace to="/chat" /> : <Forgotpwd />}
+        element={
+          loggedUser ? (
+            <Navigate replace to="/chat" />
+          ) : (
+            <>
+              <Forgotpwd />
+              <Footer />
+            </>
+          )
+        }
       />
     </Routes>
   );

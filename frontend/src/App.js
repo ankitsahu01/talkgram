@@ -1,7 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import AllRoutes from "./AllRoutes";
 import { ToastContainer } from "react-toastify";
-import Footer from "./components/miscellaneous/Footer";
 import ToggleColorMode from "./ToggleColorMode";
 import PageLoadProgress from "./PageLoadProgress";
 
@@ -11,7 +10,6 @@ function App() {
       <ToggleColorMode>
         <AllRoutes />
         <PageLoadProgress />
-        <Footer />
       </ToggleColorMode>
 
       <ToastContainer
