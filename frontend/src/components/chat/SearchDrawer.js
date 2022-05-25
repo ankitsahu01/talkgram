@@ -94,7 +94,14 @@ const SearchDrawer = () => {
       <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
         <Paper
           square
-          sx={{ p: 2, pl: 0, position: "sticky", top: 0, zIndex: 1 }}
+          sx={{
+            p: 2,
+            pl: 0,
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+            display: "flex",
+          }}
         >
           <Tooltip title="Go back">
             <IconButton
