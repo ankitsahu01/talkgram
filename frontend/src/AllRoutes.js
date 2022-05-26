@@ -5,6 +5,7 @@ import Forgotpwd from "./pages/ForgotPwd";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./components/miscellaneous/Footer";
+import NotFound from "./pages/NotFound";
 import { useSelector } from "react-redux";
 
 const AllRoutes = () => {
@@ -63,6 +64,14 @@ const AllRoutes = () => {
               <Footer />
             </>
           )
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <>
+            <NotFound /> <Footer />
+          </>
         }
       />
     </Routes>
