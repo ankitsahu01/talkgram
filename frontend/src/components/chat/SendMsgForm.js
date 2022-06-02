@@ -9,10 +9,13 @@ import SendIcon from "@mui/icons-material/Send";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
+import { setMessages } from "../../stateFeatures/messageSlice";
 
-const SendMsgForm = ({ messages, setMessages, scrollToLastMsg }) => {
+const SendMsgForm = ({ scrollToLastMsg }) => {
   const dispatch = useDispatch();
-  const { loggedUser, selectedChat, socket } = useSelector((state) => state);
+  const { loggedUser, selectedChat, socket, messages } = useSelector(
+    (state) => state
+  );
   const [inpMsg, setInpMsg] = useState("");
   const [selfTyping, setSelfTyping] = useState(false);
 
@@ -30,7 +33,7 @@ const SendMsgForm = ({ messages, setMessages, scrollToLastMsg }) => {
       });
       const data = await res.json();
       socket.value.emit("new message", data);
-      setMessages([...messages, data]);
+      dispatch(setMessages([...messages, data]));
       setInpMsg("");
       scrollToLastMsg();
       dispatch(setFetchAgain());

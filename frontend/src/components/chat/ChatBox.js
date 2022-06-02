@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
 import { setNotifications } from "../../stateFeatures/notificationsSlice";
 import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
+import { setMessages } from "../../stateFeatures/messageSlice";
 import { getSender } from "../../config/ChatLogics";
 import UpdateGroupModal from "./UpdateGroupModal";
 import SingleChat from "./SingleChat";
@@ -18,11 +19,9 @@ import { toast } from "react-toastify";
 
 const ChatBox = () => {
   const dispatch = useDispatch();
-  const { loggedUser, notifications, selectedChat, socket } = useSelector(
-    (state) => state
-  );
+  const { loggedUser, notifications, selectedChat, socket, messages } =
+    useSelector((state) => state);
   const [loading, setLoading] = useState(true);
-  const [messages, setMessages] = useState([]);
 
   const fetchMessages = async () => {
     setLoading(true);
@@ -35,7 +34,7 @@ const ChatBox = () => {
         },
       });
       const data = await res.json();
-      setMessages(data);
+      dispatch(setMessages(data));
       setLoading(false);
     } catch (err) {
       toast.error(err.message);
@@ -73,7 +72,7 @@ const ChatBox = () => {
         );
         dispatch(setNotifications([newMsgReceived, ...filterNotifs]));
       } else {
-        setMessages([...messages, newMsgReceived]);
+        dispatch(setMessages([...messages, newMsgReceived]));
       }
       dispatch(setFetchAgain());
     });
@@ -160,9 +159,7 @@ const ChatBox = () => {
         />
       )}
 
-      {!loading && selectedChat && messages && (
-        <SingleChat messages={messages} setMessages={setMessages} />
-      )}
+      {!loading && selectedChat && messages && <SingleChat />}
     </Box>
   );
 };

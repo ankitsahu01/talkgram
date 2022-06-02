@@ -5,7 +5,8 @@ import chatsReducer from "./stateFeatures/chatsSlice";
 import fetchAgainReducer from "./stateFeatures/fetchAgainSlice";
 import notificationsReducer from "./stateFeatures/notificationsSlice";
 import selectedChatReducer from "./stateFeatures/selectedChatSlice";
-import colorModeSlice from "./stateFeatures/colorModeSlice";
+import colorModeReducer from "./stateFeatures/colorModeSlice";
+import messageReducer from "./stateFeatures/messageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +15,9 @@ export const store = configureStore({
     chats: chatsReducer,
     notifications: notificationsReducer,
     selectedChat: selectedChatReducer,
-    colorMode: colorModeSlice,
+    colorMode: colorModeReducer,
     fetchAgain: fetchAgainReducer,
+    messages: messageReducer,
   },
   middleware: (getDefaultMiddleware) =>
     // To solve the error of "A non-serializable value was detected in the state".

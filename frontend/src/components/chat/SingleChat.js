@@ -6,8 +6,10 @@ import LoadingAnimation from "../animations/LoadingAnimation";
 import SendMsgForm from "./SendMsgForm";
 import { useSelector } from "react-redux";
 
-const SingleChat = ({ messages, setMessages }) => {
-  const { loggedUser, selectedChat, socket } = useSelector((state) => state);
+const SingleChat = () => {
+  const { loggedUser, selectedChat, socket, messages } = useSelector(
+    (state) => state
+  );
   const [modalUser, setModalUser] = useState({});
   const [isOthersTyping, setIsOthersTyping] = useState(false);
   const [whoIsTyping, setWhoIsTyping] = useState("");
@@ -182,11 +184,7 @@ const SingleChat = ({ messages, setMessages }) => {
         </div>
 
         <Box sx={{ p: 0.7, pt: 0 }}>
-          <SendMsgForm
-            messages={messages}
-            setMessages={setMessages}
-            scrollToLastMsg={scrollToLastMsg}
-          />
+          <SendMsgForm scrollToLastMsg={scrollToLastMsg} />
         </Box>
 
         <Box sx={{ display: "none" }}>
