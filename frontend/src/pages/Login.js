@@ -107,7 +107,7 @@ const Login = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid item sm={6} md={4}>
           <Paper
             component="form"
             onSubmit={submitHandler}

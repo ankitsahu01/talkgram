@@ -71,7 +71,6 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
           (notif) => notif.chat._id !== newMsgReceived.chat._id
         );
         dispatch(setNotifications([newMsgReceived, ...filterNotifs]));
-        // setFetchAgain(!fetchAgain);
       } else {
         setMessages([...messages, newMsgReceived]);
       }

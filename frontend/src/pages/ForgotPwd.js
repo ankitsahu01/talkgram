@@ -107,7 +107,7 @@ const ForgotPwd = () => {
           <CssBaseline />
           <Paper
             elevation={4}
-            sx={{ borderRadius: 3, mt: 15 }}
+            sx={{ borderRadius: 3, mt: 10, mb: 5 }}
             component="form"
             onSubmit={isOtpValid ? handlePwdForm : handleEmailForm}
           >
