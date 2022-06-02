@@ -7,15 +7,11 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
 
-const SendMsgForm = ({
-  messages,
-  setMessages,
-  scrollToLastMsg,
-  fetchAgain,
-  setFetchAgain,
-}) => {
+const SendMsgForm = ({ messages, setMessages, scrollToLastMsg }) => {
+  const dispatch = useDispatch();
   const { loggedUser, selectedChat, socket } = useSelector((state) => state);
   const [inpMsg, setInpMsg] = useState("");
   const [selfTyping, setSelfTyping] = useState(false);
@@ -37,7 +33,7 @@ const SendMsgForm = ({
       setMessages([...messages, data]);
       setInpMsg("");
       scrollToLastMsg();
-      setFetchAgain(!fetchAgain);
+      dispatch(setFetchAgain());
     } catch (err) {
       toast.error(err.message);
       console.log(err.message);

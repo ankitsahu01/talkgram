@@ -20,8 +20,9 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ProfileModal from "../user/ProfileModal";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
+import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
 
-const UpdateGroupModal = ({ children, fetchAgain, setFetchAgain }) => {
+const UpdateGroupModal = ({ children }) => {
   const dispatch = useDispatch();
   const { loggedUser, selectedChat } = useSelector((state) => state);
   const [loading, setLoading] = useState({
@@ -155,7 +156,7 @@ const UpdateGroupModal = ({ children, fetchAgain, setFetchAgain }) => {
       "Group name updated"
     );
     if (renamed) {
-      setFetchAgain(!fetchAgain);
+      dispatch(setFetchAgain());
       dispatch(setSelectedChat(renamed));
       handleClose();
     }
@@ -174,7 +175,7 @@ const UpdateGroupModal = ({ children, fetchAgain, setFetchAgain }) => {
       "You left the group"
     );
     if (isLeft) {
-      setFetchAgain(!fetchAgain);
+      dispatch(setFetchAgain());
       dispatch(setSelectedChat(null));
       handleClose();
     }
@@ -192,7 +193,7 @@ const UpdateGroupModal = ({ children, fetchAgain, setFetchAgain }) => {
       "Group deleted"
     );
     if (isDeleted) {
-      setFetchAgain(!fetchAgain);
+      dispatch(setFetchAgain());
       dispatch(setSelectedChat(null));
       handleClose();
     }

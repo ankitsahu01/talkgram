@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "../components/chat/Navbar";
 import MyChats from "../components/chat/MyChats";
 import ChatBox from "../components/chat/ChatBox";
@@ -17,7 +17,6 @@ const Chatpage = () => {
   const loggedUser = useSelector((state) => state.loggedUser);
   const colorMode = useSelector((state) => state.colorMode);
   const dispatch = useDispatch();
-  const [fetchAgain, setFetchAgain] = useState(false);
 
   useEffect(() => {
     const socket = io(ENDPOINT);
@@ -45,7 +44,7 @@ const Chatpage = () => {
               ), url(${bgImg})`,
         }}
       >
-        <Navbar fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+        <Navbar />
         <Box
           sx={{
             display: "flex",
@@ -55,9 +54,9 @@ const Chatpage = () => {
             height: "82vh",
           }}
         >
-          <MyChats fetchAgain={fetchAgain} />
+          <MyChats />
 
-          <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+          <ChatBox />
         </Box>
       </Box>
     </>

@@ -16,12 +16,11 @@ import { setChats } from "../../stateFeatures/chatsSlice";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
 import { setNotifications } from "../../stateFeatures/notificationsSlice";
 
-const MyChats = ({ fetchAgain }) => {
+const MyChats = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const { loggedUser, chats, notifications, selectedChat } = useSelector(
-    (state) => state
-  );
+  const { loggedUser, chats, notifications, selectedChat, fetchAgain } =
+    useSelector((state) => state);
 
   const fetchChats = async () => {
     try {

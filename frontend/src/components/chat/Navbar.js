@@ -21,6 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeLoggedUser } from "../../stateFeatures/loggedUserSlice";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
 import { setNotifications } from "../../stateFeatures/notificationsSlice";
+import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
 import LightModeLogo from "../../assets/logo_lightmode.png";
 import DarkModeLogo from "../../assets/logo_darkmode.png";
 import ChangePwdModal from "./ChangePwdModal";
@@ -47,7 +48,7 @@ const menuUpConeStyle = (rightMes) => ({
   },
 });
 
-export default function Navbar({ fetchAgain, setFetchAgain }) {
+export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loggedUser, notifications, colorMode } = useSelector(
@@ -204,7 +205,7 @@ export default function Navbar({ fetchAgain, setFetchAgain }) {
               to="/"
               onClick={() => {
                 dispatch(setSelectedChat(null));
-                setFetchAgain(!fetchAgain);
+                dispatch(setFetchAgain());
               }}
             >
               <img

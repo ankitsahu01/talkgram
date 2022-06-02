@@ -6,7 +6,7 @@ import LoadingAnimation from "../animations/LoadingAnimation";
 import SendMsgForm from "./SendMsgForm";
 import { useSelector } from "react-redux";
 
-const SingleChat = ({ messages, setMessages, fetchAgain, setFetchAgain }) => {
+const SingleChat = ({ messages, setMessages }) => {
   const { loggedUser, selectedChat, socket } = useSelector((state) => state);
   const [modalUser, setModalUser] = useState({});
   const [isOthersTyping, setIsOthersTyping] = useState(false);
@@ -186,8 +186,6 @@ const SingleChat = ({ messages, setMessages, fetchAgain, setFetchAgain }) => {
             messages={messages}
             setMessages={setMessages}
             scrollToLastMsg={scrollToLastMsg}
-            fetchAgain={fetchAgain}
-            setFetchAgain={setFetchAgain}
           />
         </Box>
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedChat } from "../../stateFeatures/selectedChatSlice";
 import { setNotifications } from "../../stateFeatures/notificationsSlice";
+import { setFetchAgain } from "../../stateFeatures/fetchAgainSlice";
 import { getSender } from "../../config/ChatLogics";
 import UpdateGroupModal from "./UpdateGroupModal";
 import SingleChat from "./SingleChat";
@@ -15,7 +16,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "react-toastify";
 
-const ChatBox = ({ fetchAgain, setFetchAgain }) => {
+const ChatBox = () => {
   const dispatch = useDispatch();
   const { loggedUser, notifications, selectedChat, socket } = useSelector(
     (state) => state
@@ -74,7 +75,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       } else {
         setMessages([...messages, newMsgReceived]);
       }
-      setFetchAgain(!fetchAgain);
+      dispatch(setFetchAgain());
     });
   });
 
@@ -110,7 +111,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
             sx={{ display: { md: "none", xs: "flex" } }}
             onClick={() => {
               dispatch(setSelectedChat(null));
-              setFetchAgain(!fetchAgain);
+              dispatch(setFetchAgain());
             }}
           >
             <ArrowBackIosIcon />
@@ -121,10 +122,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
               : getSender(loggedUser, selectedChat.users).fullname}
           </Typography>
           {selectedChat?.isGroupChat ? (
-            <UpdateGroupModal
-              fetchAgain={fetchAgain}
-              setFetchAgain={setFetchAgain}
-            >
+            <UpdateGroupModal>
               <IconButton>
                 <EditIcon />
               </IconButton>
@@ -163,12 +161,7 @@ const ChatBox = ({ fetchAgain, setFetchAgain }) => {
       )}
 
       {!loading && selectedChat && messages && (
-        <SingleChat
-          messages={messages}
-          setMessages={setMessages}
-          fetchAgain={fetchAgain}
-          setFetchAgain={setFetchAgain}
-        />
+        <SingleChat messages={messages} setMessages={setMessages} />
       )}
     </Box>
   );
