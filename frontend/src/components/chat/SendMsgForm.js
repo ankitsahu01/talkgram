@@ -20,6 +20,7 @@ const SendMsgForm = ({ scrollToLastMsg }) => {
   const [selfTyping, setSelfTyping] = useState(false);
 
   const sendMessage = async () => {
+    var startTime = performance.now();
     try {
       socket.value.emit("stop typing", selectedChat._id);
       setSelfTyping(false);
@@ -41,6 +42,8 @@ const SendMsgForm = ({ scrollToLastMsg }) => {
       toast.error(err.message);
       console.log(err.message);
     }
+    var endTime = performance.now();
+    console.log(`Execution time is ${endTime - startTime} milliseconds`);
   };
 
   const typingHandler = (e) => {
