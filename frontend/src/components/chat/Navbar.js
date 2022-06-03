@@ -178,18 +178,20 @@ export default function Navbar() {
       open={isNotificationMenuOpen}
       onClose={handleNotificationMenuClose}
     >
-      {notifications.length ? (
-        notifications.map((notif) => (
-          <MenuItem key={notif._id} onClick={() => openNotifChat(notif)}>
-            New message
-            {notif.chat.isGroupChat
-              ? " in " + notif.chat.chatName
-              : " from " + notif.sender.fullname}
-          </MenuItem>
-        ))
-      ) : (
-        <MenuItem disabled>No message</MenuItem>
-      )}
+      <Box sx={{ maxHeight: "75vh", overflowY: "auto" }}>
+        {notifications.length ? (
+          notifications.map((notif) => (
+            <MenuItem key={notif._id} onClick={() => openNotifChat(notif)}>
+              New message
+              {notif.chat.isGroupChat
+                ? " in " + notif.chat.chatName
+                : " from " + notif.sender.fullname}
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem disabled>No message</MenuItem>
+        )}
+      </Box>
     </Menu>
   );
 

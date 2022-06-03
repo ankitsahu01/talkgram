@@ -1,10 +1,8 @@
 import { useState } from "react";
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import SendIcon from "@mui/icons-material/Send";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
