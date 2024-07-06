@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "Ankit Sahu",
@@ -24,7 +23,6 @@
     "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15",
     "react-redux": "^7.2.6",
-    "socket.io": "^4.4.1",
-    "yarn": "^1.22.17"
+    "socket.io": "^4.4.1"
   }
 }
