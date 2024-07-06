@@ -181,11 +181,7 @@ const Login = () => {
             <Button
               fullWidth
               variant="outlined"
-              href={
-                process.env.NODE_ENV === "production"
-                  ? "https://talkgram.herokuapp.com/auth/google/url"
-                  : "http://localhost:4000/auth/google/url"
-              }
+              href={`${process.env.REACT_APP_BACKEND_URL}/auth/google/url`}
               startIcon={<GoogleIcon />}
             >
               Continue with Google

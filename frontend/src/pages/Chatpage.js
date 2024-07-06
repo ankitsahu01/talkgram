@@ -8,10 +8,7 @@ import { io } from "socket.io-client";
 import Box from "@mui/material/Box";
 import bgImg from "../assets/background.jpg";
 
-const ENDPOINT =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:4000"
-    : "https://talkgram.herokuapp.com";
+const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 
 const Chatpage = () => {
   const loggedUser = useSelector((state) => state.loggedUser);
