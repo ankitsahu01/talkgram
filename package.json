@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "concurrently \"nodemon backend/server.js\" \"npm run watch-frontend\"",
+    "build-frontend": "npm run build --prefix frontend",
+    "watch-frontend": "chokidar frontend/src/**/* -c \"npm run build-frontend\"",
+    "build": "npm install && npm install --prefix frontend && npm run build-frontend && npm run watch-frontend",
+    "start": "nodemon backend/server.js"
   },
   "keywords": [],
   "author": "Ankit Sahu",
@@ -24,5 +28,9 @@
     "nodemon": "^2.0.15",
     "react-redux": "^7.2.6",
     "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.2"
   }
 }

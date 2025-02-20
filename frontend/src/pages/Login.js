@@ -181,7 +181,7 @@ const Login = () => {
             <Button
               fullWidth
               variant="outlined"
-              href={`${process.env.REACT_APP_BACKEND_URL}/auth/google/url`}
+              href={`/auth/google/url`}
               startIcon={<GoogleIcon />}
             >
               Continue with Google
