@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"nodemon backend/server.js\" \"npm run watch-frontend\"",
+    "dev": "concurrently \"npm run build\" \"nodemon backend/server.js\" \"npm run watch-frontend\"",
     "build-frontend": "npm run build --prefix frontend",
+    "build": "npm install && npm install --prefix frontend && npm run build-frontend",
     "watch-frontend": "chokidar frontend/src/**/* -c \"npm run build-frontend\"",
-    "build": "npm install && npm install --prefix frontend && npm run build-frontend && npm run watch-frontend",
     "start": "nodemon backend/server.js"
   },
   "keywords": [],
